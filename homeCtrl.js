@@ -1,3 +1,33 @@
+angular.module( "AngularMail" )
+.controller( "homeCtrl", function( $http, $scope ) {
+  // All of the logic for the controller lives in this function above.
+$scope.contacts = contacts;
+$scope.showNewContactForm = false;
+
+$scope.deleteContact = function( index ) {
+  $scope.contacts.splice( index, 1 );
+}
+
+$scope.clearContactForm = function() {
+  $scope.newContact = {
+    name:"",
+    phone:"",
+    email:""
+  };
+  $scope.showNewContactForm = false;
+}
+
+$scope.addNewContact = function( newContact ) {
+  newContact.picture = "http://placehold.it/32x32";
+  $scope.contacts.push( newContact );
+
+  $scope.clearContactForm();
+}
+});
+
+// ng-if does the same thing as ng-click but removes the item physically from the DOM / html.
+
+
 var contacts = [
   {
     "_id": "57caeff3a4df71209304615a",
